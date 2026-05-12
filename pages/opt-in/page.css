@@ -3,6 +3,25 @@
    Depends on tokens from /shared/styles/colors_and_type.css.
    ========================================================================= */
 
+/* ---------- Escape GHL wrapper constraints --------------------------------
+   GHL nests the Custom HTML element inside section/row/column wrappers that
+   apply their own max-width and horizontal padding. Walk up the ancestor
+   chain from #kb-optin and zero those out so the design controls its own
+   width. Add deeper rows if GHL wraps more levels in future. */
+:has(> #kb-optin),
+:has(> * > #kb-optin),
+:has(> * > * > #kb-optin),
+:has(> * > * > * > #kb-optin),
+:has(> * > * > * > * > #kb-optin),
+:has(> * > * > * > * > * > #kb-optin),
+:has(> * > * > * > * > * > * > #kb-optin),
+:has(> * > * > * > * > * > * > * > #kb-optin) {
+  max-width: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: 100% !important;
+}
+
 :root {
   --accent: var(--kb-accent);
   --eyebrow-color: var(--kb-brown);
